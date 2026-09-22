@@ -2,14 +2,14 @@
 
 import pygame
 
-# ИWe import the Board class from the gameparts package.
+# We import the Board class from the gameparts package.
 from gameparts import Board
 
 pygame.init()
 
-# Здесь определены разные константы, например
-# размер ячейки и доски, цвет и толщина линий.
-# Эти константы используются при отрисовке графики.
+# Various constants are defined here, for example.
+# The size of the cell and the board, the color and thickness of the lines.
+# These constants are used when rendering graphics.
 CELL_SIZE = 100
 BOARD_SIZE = 3
 WIDTH = HEIGHT = CELL_SIZE * BOARD_SIZE
@@ -22,7 +22,7 @@ X_WIDTH = 15
 O_WIDTH = 15
 SPACE = CELL_SIZE // 4
 
-# Настройка экрана.
+# Screen settings.
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Tic-tac-toe')
 screen.fill(BG_COLOR)
@@ -122,7 +122,7 @@ def main():
 
                 # If you click on an empty cell
                 if game.board[clicked_row][clicked_col] == ' ':
-                    # Делаем ход
+                    # We’re making a move.
                     game.make_move(clicked_row, clicked_col, current_player)
                     # We are rendering the updated figures.
                     draw_figures(game.board)
