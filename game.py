@@ -130,13 +130,13 @@ def main():
 
                     # We’re checking the victory.
                     if game.check_win(current_player):
-                        result_message = f'Победили {current_player}'
+                        result_message = f'They won {current_player}'
                         print(result_message)
                         save_result(result_message)
                         running = False
                     # We’re checking for a draw.
                     elif game.is_board_full():
-                        result_message = 'Ничья!'
+                        result_message = 'Draw!'
                         print(result_message)
                         save_result(result_message)
                         running = False
