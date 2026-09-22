@@ -2,7 +2,7 @@
 
 import pygame
 
-# Импортируем класс Board из пакета gameparts
+# ИWe import the Board class from the gameparts package.
 from gameparts import Board
 
 pygame.init()
@@ -24,13 +24,13 @@ SPACE = CELL_SIZE // 4
 
 # Настройка экрана.
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Крестики-нолики')
+pygame.display.set_caption('Tic-tac-toe')
 screen.fill(BG_COLOR)
 
 
-# Функция, которая отвечает за отрисовку горизонтальных и вертикальных линий.
+# The function responsible for rendering horizontal and vertical lines.
 def draw_lines():
-    # Горизонтальные линии.
+    # Horizontal lines.
     for i in range(1, BOARD_SIZE):
         pygame.draw.line(
             screen,
@@ -40,7 +40,7 @@ def draw_lines():
             LINE_WIDTH
         )
 
-    # Вертикальные линии.
+    # ВVertical lines.
     for i in range(1, BOARD_SIZE):
         pygame.draw.line(
             screen,
@@ -51,8 +51,8 @@ def draw_lines():
         )
 
 
-# Функция, которая отвечает за отрисовку фигур
-# (крестиков и ноликов) на доске.
+# The function responsible for rendering shapes
+# (tic‑tac‑toe) on the board.
 def draw_figures(board):
     for row in range(BOARD_SIZE):
         for col in range(BOARD_SIZE):
@@ -93,7 +93,7 @@ def draw_figures(board):
                 )
 
 
-# Функция save_result() для сохранения исхода матча
+# ФThe save_result() function to save the match outcome
 def save_result(result):
     with open('results.txt', 'a', encoding='utf-8') as f:
         f.write(result + '\n')
@@ -105,8 +105,8 @@ def main():
     running = True
     draw_lines()
 
-    # В цикле обрабатываются такие события, как
-    # нажатие кнопок мыши и закрытие окна.
+    # The loop processes events such as
+    # Clicking the mouse buttons and closing the window.
     while running:
 
         for event in pygame.event.get():
@@ -120,34 +120,34 @@ def main():
                 clicked_row = mouse_x // CELL_SIZE
                 clicked_col = mouse_y // CELL_SIZE
 
-                # Если кликнули на свободную ячейку
+                # If you click on an empty cell
                 if game.board[clicked_row][clicked_col] == ' ':
                     # Делаем ход
                     game.make_move(clicked_row, clicked_col, current_player)
-                    # Отрисовываем обновленные фигуры
+                    # We are rendering the updated figures.
                     draw_figures(game.board)
                     pygame.display.update()
 
-                    # Проверяем победу
+                    # We’re checking the victory.
                     if game.check_win(current_player):
                         result_message = f'Победили {current_player}'
                         print(result_message)
                         save_result(result_message)
                         running = False
-                    # Проверяем ничью
+                    # We’re checking for a draw.
                     elif game.is_board_full():
                         result_message = 'Ничья!'
                         print(result_message)
                         save_result(result_message)
                         running = False
 
-                    # Меняем игрока
+                    # We’re changing the player.
                     current_player = 'O' if current_player == 'X' else 'X'
 
-        # Обновить окно игры.
+        # Update the game window.
         pygame.display.update()
 
-    # Небольшая пауза перед закрытием окна при конце игры (по желанию)
+    # A short pause before closing the window at the end of the game (optional)
     pygame.time.wait(1000)
     pygame.quit()
 

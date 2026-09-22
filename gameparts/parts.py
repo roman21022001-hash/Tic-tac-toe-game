@@ -1,5 +1,5 @@
 class Board:
-    """Класс, который описывает игровое поле."""
+    """A class that describes the playing field."""
 
     field_size = 3
 
@@ -14,33 +14,33 @@ class Board:
             print('|'.join(row))
             print('-' * 5)
 
- # Переопределяем метод __str__.
+ # We are overriding the __str__ method.
     def __str__(self):
         return (
-            'Объект игрового поля размером '
+            'The object of the playing field is of a certain size'
             f'{self.field_size}x{self.field_size}'
         )
 
     def is_board_full(self):
-        # Цикл проходится по всем столбцам игрового поля.
+        # The cycle iterates through all the columns of the game board.
         for i in range(self.field_size):
-            # А потом по всем строчкам.
+            # And then, going through all the lines.
             for j in range(self.field_size):
-                # Если находит свободную ячейку...
+                # If it finds an available cell...
                 if self.board[i][j] == ' ':
-                    # ...игра продолжается.
+                    # ...the game continues.
                     return False
-        # Иначе - ничья!
+        # Otherwise, it’s a draw!
         return True
-# Этот метод будет определять победу.
+# This method will determine the victory.
 
     def check_win(self, player):
-        # Тут реализована проверка по вертикали и горизонтали.
+        # Here, a check is implemented both vertically and horizontally.
         for i in range(3):
             if (all([self.board[i][j] == player for j in range(3)]) or
                     all([self.board[j][i] == player for j in range(3)])):
                 return True
-        # Тут реализована проверка по диагонали.
+        # Here, a diagonal check is implemented.
         if (
             self.board[0][0] == self.board[1][1] == self.board[2][2] == player
             or

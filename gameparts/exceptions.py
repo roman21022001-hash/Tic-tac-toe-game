@@ -1,9 +1,7 @@
 class FieldIndexError(IndexError):
 
     def __str__(self):
-        return 'Введено значение за границами игрового поля'
-
-# Вот оно - новое исключение, унаследованное от базового класса Exception.
+        return 'A value outside the boundaries of the playing field has been entered'
 
 
 class CellOccupiedError(Exception):
